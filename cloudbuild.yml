@@ -3,7 +3,5 @@
   entrypoint: 'dotnet'                      # Especifica el comando a ejecutar
   args: ['restore', 'NotasWebApi/NotasWebApi.csproj']  # Restaura las dependencias del proyecto
 - args: ['build', 'NotasWebApi/NotasWebApi.csproj']      # Compila el proyecto
-- name: 'gcr.io/cloud-builders/docker'      # Utiliza la imagen del builder de Docker
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/notesDockerImg', '.']  # Construye la imagen de Docker
 images:
 - 'gcr.io/$PROJECT_ID/notesDockerImg'  # Especifica la imagen de contenedor para subir a Container Registry

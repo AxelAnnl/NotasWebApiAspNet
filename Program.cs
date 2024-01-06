@@ -128,14 +128,11 @@ builder.Services.AddCors(options =>
 	});
 });
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 
 var app = builder.Build();
 // Configurar Kestrel para utilizar $PORT
-var port = Environment.GetEnvironmentVariable("PORT");
-if (string.IsNullOrEmpty(port))
-{
-	port = "5000"; // Puerto predeterminado si $PORT no está configurado (puedes ajustar esto según tus necesidades)
-}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -163,5 +160,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
-
+app.Run($"http://0.0.0.0:{port}");

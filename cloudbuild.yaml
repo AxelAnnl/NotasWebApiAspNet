@@ -1,7 +1,21 @@
 ﻿steps:
-- name: 'mcr.microsoft.com/dotnet/sdk:5.0'  # Utiliza la imagen del SDK de .NET Core 5.0
+- name: 'mcr.microsoft.com/dotnet/sdk:8.0'  # Utiliza la imagen del SDK de .NET Core 5.0
   entrypoint: 'dotnet'                      # Especifica el comando a ejecutar
   args: ['restore', 'NotasWebApi/NotasWebApi.csproj']  # Restaura las dependencias del proyecto
-- args: ['build', 'NotasWebApi/NotasWebApi.csproj']      # Compila el proyecto
+- name: 'mcr.microsoft.com/dotnet/sdk:8.0'  # Utiliza la imagen del SDK de .NET Core 5.0
+  args: ['build', '-c', 'Release', 'NotasWebApi/NotasWebApi.csproj']  # Compila el proyecto en modo Release
+
+# Construcción y empuje de la imagen de Docker
+- name: 'gcr.io/cloud-builders/docker'    # Utiliza la imagen de Docker
+  args:
+  - 'build'                               # Comando de construcción de Docker
+  - '-t'                                  # Opción de etiqueta
+  - 'gcr.io/$PROJECT_ID/notesDockerImg'   # Nombre de la imagen con etiqueta
+  - '.'                                   # Contexto del build, generalmente el directorio actual
+
+- name: 'gcr.io/cloud-builders/docker'    # Utiliza la imagen de Docker
+  args:
+  - 'push'                                # Comando de empuje de Docker
+  - 'gcr.io/$PROJECT_ID/notesDockerImg'   # Nombre de la imagen a empujar
 images:
 - 'gcr.io/$PROJECT_ID/notesDockerImg'  # Especifica la imagen de contenedor para subir a Container Registry

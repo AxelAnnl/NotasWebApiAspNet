@@ -10,13 +10,13 @@
   args:
   - 'build'                               # Comando de construcción de Docker
   - '-t'                                  # Opción de etiqueta
-  - 'gcr.io/tu-proyecto-id/notesDockerImg'   # Nombre de la imagen con etiqueta, reemplaza "tu-proyecto-id" con el ID de tu proyecto
+  - 'gcr.io/1/notesDockerImg'   # Nombre de la imagen con etiqueta, reemplaza "tu-proyecto-id" con el ID de tu proyecto
   - '.'                                   # Contexto del build, generalmente el directorio actual
 
 - name: 'gcr.io/cloud-builders/docker'    # Utiliza la imagen de Docker
   args:
   - 'push'                                # Comando de empuje de Docker
-  - 'gcr.io/tu-proyecto-id/notesDockerImg'   # Nombre de la imagen a empujar, reemplaza "tu-proyecto-id" con el ID de tu proyecto
+  - 'gcr.io/1/notesDockerImg'   # Nombre de la imagen a empujar, reemplaza "tu-proyecto-id" con el ID de tu proyecto
 
 images:
-- 'gcr.io/tu-proyecto-id/notesDockerImg'  # Especifica la imagen de contenedor para subir a Container Registry, reemplaza "tu-proyecto-id" con el ID de tu proyecto
+- 'gcr.io/1/notesDockerImg'  # Especifica la imagen de contenedor para subir a Container Registry, reemplaza "tu-proyecto-id" con el ID de tu proyecto

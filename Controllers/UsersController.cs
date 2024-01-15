@@ -413,6 +413,12 @@ namespace NotasWeb.Controllers
 			return Ok(response);
 
 		}
+		[HttpGet("probar")]
+		[AllowAnonymous]
+		public IActionResult ProveApi()
+		{
+			return Ok("La api funciona");
+		}
 
 		//[AllowAnonymous]
 		//[HttpGet]

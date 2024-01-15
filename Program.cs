@@ -116,7 +116,7 @@ builder.Services.AddTransient<ITokenService, TokenService>();
 //---------------------------------------------------------------
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen();
 	
 builder.Services.AddCors(options =>
 {
@@ -134,11 +134,11 @@ var app = builder.Build();
 // Configurar Kestrel para utilizar $PORT
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-	app.UseSwagger();
-	app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//	app.UseSwagger();
+//	app.UseSwaggerUI();
+//}
 
 
 
@@ -160,4 +160,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run($"http://0.0.0.0:{port}");
+app.Run();
